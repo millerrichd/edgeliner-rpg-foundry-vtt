@@ -1,0 +1,139 @@
+{
+  "SENTIUS_RPG": {
+    "Ability": {
+      "Agi": { "long": "Agility", "abbr": "agi" },
+      "End": { "long": "Endurance", "abbr": "end" },
+      "Qui": { "long": "Quickness", "abbr": "qui" },
+      "Str": { "long": "Strength", "abbr": "str" },
+      "Int": { "long": "Intuition", "abbr": "int" },
+      "Pre": { "long": "Presence", "abbr": "pre" },
+      "Rea": { "long": "Reasoning", "abbr": "rea" },
+      "Wil": { "long": "Will", "abbr": "wil" }
+    },
+    "DerivedAbilityValue": {
+      "Encumbrance": { "long": "Encumbrance", "abbr": "enc" },
+      "DefenseMelee": { "long": "Defense Melee", "abbr": "dfm" },
+      "DefenseRange": { "long": "Defense Range", "abbr": "dfr" },
+      "Fatigue": { "long": "Fatigue Maximum", "abbr": "fat" },
+      "Initiative": { "long": "Initiative Speed", "abbr": "ini" },
+      "Pace": { "long": "Pace", "abbr": "pac" },
+      "Stability": { "long": "Stability", "abbr": "sta" }      
+    },
+    "DerivedAbilityPool": {
+      "Cybernetic": { "long": "Cybernetic", "abbr": "cyb" },
+      "Faith": { "long": "Faith", "abbr": "fth" },
+      "Health": { "long": "Health", "abbr": "hea" },
+      "Mana": { "long": "Mana", "abbr": "man" },
+      "Psychic": { "long": "Psychic", "abbr": "psy" },
+      "PaceDie": { "long": "Pace Die", "abbr": "pacd" }
+    },
+    "Skill": {
+      "AnimalHandling": { "long": "Animal Handling", "abbr": "ani" },
+      "Athletics": { "long": "Athletics", "abbr": "ath" },
+      "CombatFirearms": { "long": "Combat Firearms", "abbr": "cfm" },
+      "CombatGunnery": { "long": "Combat Gunnery", "abbr": "cgn" },
+      "CombatMelee": { "long": "Combat Melee", "abbr": "cme" },
+      "CombatMissile": { "long": "Combat Missile", "abbr": "cml" },
+      "Computers": { "long": "Computers", "abbr": "com" },
+      "Demolitions": { "long": "Demolitions", "abbr": "dem" },
+      "Disguise": { "long": "Disguise", "abbr": "dis" },
+      "Drive": { "long": "Drive", "abbr": "dri" },
+      "History": { "long": "History", "abbr": "his" },
+      "Intimidation": { "long": "Intimidation", "abbr": "int" },
+      "LockstrapsElectronic": { "long": "Lockstraps Electronic", "abbr": "lke" },
+      "LockstrapsMechanical": { "long": "Lockstraps Mechanical", "abbr": "lkm" },
+      "Medicine": { "long": "Medicine", "abbr": "med" },
+      "Perception": { "long": "Perception", "abbr": "per" },
+      "Performance": { "long": "Performance", "abbr": "prf" },
+      "Persuasion": { "long": "Persuasion", "abbr": "per" },
+      "Pilot": { "long": "Pilot", "abbr": "pil" },
+      "ResistanceDiscipline": { "long": "Resistance Discipline", "abbr": "rdi" },
+      "ResistanceMagic": { "long": "Resistance Magic", "abbr": "rma" },
+      "ResistancePoison": { "long": "Resistance Poison", "abbr": "rpo" },
+      "ResistanceReflex": { "long": "Resistance Reflex", "abbr": "rrf" },
+      "ResistanceStamina": { "long": "Resistance Stamina", "abbr": "rsa" },
+      "Stealth": { "long": "Stealth", "abbr": "ste" },
+      "Survival": { "long": "Survival", "abbr": "sur" },
+      "TechnicalBiological": { "long": "Technical Biological", "abbr": "tbi" },
+      "TechnicalCybernetics": { "long": "Technical Cybernetics", "abbr": "tcy" },
+      "TechnicalElectronic": { "long": "Technical Electronic", "abbr": "tel" },
+      "TechnicalMechanical": { "long": "Technical Mechanical", "abbr": "tme" },
+      "TechnicalPower": { "long": "Technical Power", "abbr": "tpw" },
+      "TechnicalSoftware": { "long": "Technical Software", "abbr": "tso" }
+    },
+    "SpellAction": {
+      "Armor": { "long": "Armor", "abbr": "arm" },
+      "Create": { "long": "Create", "abbr": "cre" },
+      "Destroy": { "long": "Destroy", "abbr": "des" },
+      "Repair": { "long": "Repair", "abbr": "rep" },
+      "Shield": { "long": "Shield", "abbr": "shi" },
+      "Transform": { "long": "Transform", "abbr": "tra" },
+      "Banish": { "long": "Banish", "abbr": "ban" },
+      "Control": { "long": "Control", "abbr": "con" },
+      "Summon": { "long": "Summon", "abbr": "sum" }
+    },
+    "SpellPower": {
+      "Air": { "long": "Air", "abbr": "air" },
+      "Animal": { "long": "Animal", "abbr": "ani" },
+      "Dark": { "long": "Dark", "abbr": "dar" },
+      "Earth": { "long": "Earth", "abbr": "ear" },
+      "Fire": { "long": "Fire", "abbr": "fir" },
+      "Force": { "long": "Force", "abbr": "for" },
+      "Light": { "long": "Light", "abbr": "lig" },
+      "Plant": { "long": "Plant", "abbr": "pla" },
+      "Water": { "long": "Water", "abbr": "wat" },
+      "Ash": { "long": "Ash", "abbr": "ash" },
+      "Fissure": { "long": "Fissure", "abbr": "fis" },
+      "Lava": { "long": "Lava", "abbr": "lav" },
+      "Mist": { "long": "Mist", "abbr": "mis" },
+      "Mud": { "long": "Mud", "abbr": "mud" },
+      "Steam": { "long": "Steam", "abbr": "ste" },
+      "Angelic": { "long": "Angelic", "abbr": "ang" },
+      "Demonic": { "long": "Demonic", "abbr": "dem" },
+      "Spirit": { "long": "Spirit", "abbr": "spi" }
+    },
+    "SpellTarget": {
+      "It": { "long": "It", "abbr": "it" },
+      "Me": { "long": "Me", "abbr": "me" },
+      "Them": { "long": "Them", "abbr": "thm" },
+      "There": { "long": "There", "abbr": "the" },
+      "You": { "long": "You", "abbr": "you" }
+    },
+    "SheetLabels": {
+      "Actor": "SentiusRPG Actor Sheet",
+      "Item": "SentiusRPG Item Sheet"
+    },
+    "Item": {
+      "Spell": {
+        "SpellLVL": "Level {level} Spells",
+        "AddLVL": "Add LVL {level}"
+      }
+    },
+    "Effect": {
+      "Source": "Source",
+      "Toggle": "Toggle Effect",
+      "Temporary": "Temporary Effects",
+      "Passive": "Passive Effects",
+      "Inactive": "Inactive Effects"
+    }
+  },
+
+  "TYPES": {
+    "Actor": {
+      "character": "Character",
+      "npc": "NPC"
+    },
+    "Item": {
+      "armor": "Armor",
+      "cybernetic": "Cybernetic",
+      "hindrance": "Hindrance",
+      "item": "Item",
+      "powerarmor": "Power Armor",
+      "spell": "Spell",
+      "trait": "Trait",
+      "vehicle": "Vehicle",
+      "vehicleweapon": "Vehicle Weapon",
+      "weapon": "Weapon"
+    }
+  }
+}

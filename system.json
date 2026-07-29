@@ -1,0 +1,146 @@
+{
+  "id": "edgeliner-rpg",
+  "title": "Edgeliner RPG",
+  "description": "The Edgeliner RPG system for FoundryVTT!",
+  "authors": [
+    {
+      "name": "Richard Miller",
+      "discord": "turtletopgames"
+    }
+  ],
+  "url": "Replace this with a link to your public repository",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "bugs": "Replace this with a link to file issues or tickets",
+  "changelog": "CHANGELOG.md",
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/edgeliner-rpg/assets/anvil-impact.png",
+      "thumbnail": "systems/edgeliner-rpg/assets/anvil-impact.png"
+    }
+  ],
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": 14,
+    "verified": "14.365"
+  },
+  "esmodules": ["module/edgeliner-rpg.mjs"],
+  "styles": ["css/edgeliner-rpg.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [
+    {
+      "name": "talents",
+      "label": "Talents",
+      "path": "packs/talents",
+      "type": "Item",
+      "system": "edgeliner-rpg",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "hindrances",
+      "label": "Hindrances",
+      "path": "packs/hindrances",
+      "type": "Item",
+      "system": "edgeliner-rpg",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "weapons",
+      "label": "Weapons",
+      "path": "packs/weapons",
+      "type": "Item",
+      "system": "edgeliner-rpg",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "armors",
+      "label": "Armors",
+      "path": "packs/armors",
+      "type": "Item",
+      "system": "edgeliner-rpg",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "gear",
+      "label": "Gear",
+      "path": "packs/gear",
+      "type": "Item",
+      "system": "edgeliner-rpg",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "cybernetics",
+      "label": "Cybernetics",
+      "path": "packs/cybernetics",
+      "type": "Item",
+      "system": "edgeliner-rpg",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "drones",
+      "label": "Drones",
+      "path": "packs/drones",
+      "type": "Item",
+      "system": "edgeliner-rpg",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "vehicles",
+      "label": "Vehicles",
+      "path": "packs/vehicles",
+      "type": "Item",
+      "system": "edgeliner-rpg",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    }
+
+
+  ],
+  "packFolders": [],
+  "socket": false,
+  "manifest": "https://raw.githubusercontent.com/millerrichd/sentius-system-rpg/main/system.json",
+  "download": "https://github.com/millerrichd/sentius-system-rpg/archive/refs/heads/main.zip",
+  "background": "systems/edgeliner-rpg/assets/anvil-impact.png",
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "power"
+}

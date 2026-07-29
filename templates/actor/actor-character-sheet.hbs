@@ -1,0 +1,91 @@
+<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    {{> "systems/edgeliner-rpg/templates/actor/parts/actor-header.hbs"}}
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  {{!-- Drop Down that doesn't align like I want when scrolling --}}
+  <nav class="sheet-tabs tabs" data-group="frontpage">
+    <a class="item" data-tab="abilities">Abilities</a>
+    <a class="item" data-tab="skills">Skills</a>
+    <div class="dropdown">
+      <div class="item" data-tab="gear">Gear
+        <i class="fa fa-caret-down"></i>
+      </div>
+      <div class="dropdown-content">
+        <a class="item" data-tab="combo-wapa">Weapon, Armor, &amp; Power Armor</a>
+        <a class="item" data-tab="equipment">Equipment</a>
+        <a class="item" data-tab="vehicle">Vehicle</a>
+        <a class="item" data-tab="cybernetics">Cybernetics &amp; Bionetics</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="item" data-tab="magic">Magic
+        <i class="fa fa-caret-down"></i>
+      </div>
+      <div class="dropdown-content">
+        <a class="item" data-tab="spells">Spell Energies</a>
+        <a class="item" data-tab="miracles">Miracles</a>
+        <a class="item" data-tab="psychicpowers">Psychic Powers</a>
+      </div>
+    </div>
+    <a class="item" data-tab="description">Description</a>
+    <a class="item" data-tab="effects">Effects</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{!-- Owned Abilties Tab --}}
+    <div class="tab abilities" data-group="frontpage" data-tab="abilities">
+      {{> "systems/edgeliner-rpg/templates/actor/parts/actor-abilities.hbs"}}
+    </div>
+
+    {{!-- Owned Skills Tab --}}
+    <div class="tab skills" data-group="frontpage" data-tab="skills">
+      {{> "systems/edgeliner-rpg/templates/actor/parts/actor-skills.hbs"}}
+    </div>
+
+    {{!-- Biography Tab --}}
+    <div class="tab biography" data-group="frontpage" data-tab="description">
+      {{!-- Editors must receive enriched text data from getData to properly handle rolls --}}
+      {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true editable=editable}}
+    </div>
+
+    {{!-- Owned Weapon/armor/powerarmor SUB-Tab --}}
+    <div class="tab gear" data-group="frontpage" data-tab="gear">
+      {{> "systems/edgeliner-rpg/templates/actor/parts/actor-combo-wapa.hbs"}}
+    </div>
+    <div class="tab combo" data-group="frontpage" data-tab="combo-wapa">
+      {{> "systems/edgeliner-rpg/templates/actor/parts/actor-combo-wapa.hbs"}}
+    </div>
+
+    {{!-- Owned Equipement SUB-Tab --}}
+    <div class="tab equipment" data-group="frontpage" data-tab="equipment">
+      {{> "systems/edgeliner-rpg/templates/actor/parts/actor-equipment.hbs"}}
+    </div>
+
+    {{!-- Owned Vehicle SUB-Tab --}}
+    <div class="tab vehicle" data-group="frontpage" data-tab="vehicle">
+      {{> "systems/edgeliner-rpg/templates/actor/parts/actor-vehicle.hbs"}}
+    </div>
+
+    {{!-- Owned Cybernetic SUB-Tab --}}
+    <div class="tab cybernetics" data-group="frontpage" data-tab="cybernetics">
+      {{> "systems/edgeliner-rpg/templates/actor/parts/actor-cybernetics.hbs"}}
+    </div>
+
+    {{!-- Owned Spells Tab --}}
+    <div class="tab spells" data-group="frontpage" data-tab="spells">
+      {{> "systems/edgeliner-rpg/templates/actor/parts/actor-spells.hbs"}}
+    </div>
+
+    {{!-- Active Effects Tab --}}
+    <div class="tab effects flexcol" data-group="frontpage" data-tab="effects">
+      {{> "systems/edgeliner-rpg/templates/actor/parts/actor-effects.hbs"}}
+    </div>
+
+  </section>
+</form>
