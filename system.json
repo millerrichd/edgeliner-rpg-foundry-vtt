@@ -78,5 +78,5 @@
   },
   "primaryTokenAttribute": "stamina",
   "secondaryTokenAttribute": "drain",
-  "background": "systems/edgeliner-rpg/assets/anvil-impact.png",
+  "background": "systems/edgeliner-rpg/assets/anvil-impact.png"
 }
