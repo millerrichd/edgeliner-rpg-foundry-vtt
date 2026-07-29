@@ -34,111 +34,12 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [
-    {
-      "name": "talents",
-      "label": "Talents",
-      "path": "packs/talents",
-      "type": "Item",
-      "system": "edgeliner-rpg",
-      "ownership": {
-        "PLAYER": "LIMITED",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {}
-    },
-    {
-      "name": "hindrances",
-      "label": "Hindrances",
-      "path": "packs/hindrances",
-      "type": "Item",
-      "system": "edgeliner-rpg",
-      "ownership": {
-        "PLAYER": "LIMITED",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {}
-    },
-    {
-      "name": "weapons",
-      "label": "Weapons",
-      "path": "packs/weapons",
-      "type": "Item",
-      "system": "edgeliner-rpg",
-      "ownership": {
-        "PLAYER": "LIMITED",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {}
-    },
-    {
-      "name": "armors",
-      "label": "Armors",
-      "path": "packs/armors",
-      "type": "Item",
-      "system": "edgeliner-rpg",
-      "ownership": {
-        "PLAYER": "LIMITED",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {}
-    },
-    {
-      "name": "gear",
-      "label": "Gear",
-      "path": "packs/gear",
-      "type": "Item",
-      "system": "edgeliner-rpg",
-      "ownership": {
-        "PLAYER": "LIMITED",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {}
-    },
-    {
-      "name": "cybernetics",
-      "label": "Cybernetics",
-      "path": "packs/cybernetics",
-      "type": "Item",
-      "system": "edgeliner-rpg",
-      "ownership": {
-        "PLAYER": "LIMITED",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {}
-    },
-    {
-      "name": "drones",
-      "label": "Drones",
-      "path": "packs/drones",
-      "type": "Item",
-      "system": "edgeliner-rpg",
-      "ownership": {
-        "PLAYER": "LIMITED",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {}
-    },
-    {
-      "name": "vehicles",
-      "label": "Vehicles",
-      "path": "packs/vehicles",
-      "type": "Item",
-      "system": "edgeliner-rpg",
-      "ownership": {
-        "PLAYER": "LIMITED",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {}
-    }
-  ],
+  "packs": [],
   "packFolders": [],
   "socket": false,
   "manifest": "https://github.com/millerrichd/edgeliner-rpg-foundry-vtt/blob/main/system.json",
   "download": "https://github.com/millerrichd/edgeliner-rpg-foundry-vtt/archive/refs/heads/main.zip",
   "background": "systems/edgeliner-rpg/assets/anvil-impact.png",
-  "gridDistance": 5,
-  "gridUnits": "ft",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power"
 }
