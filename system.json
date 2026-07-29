@@ -37,7 +37,7 @@
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "manifest": "https://github.com/millerrichd/edgeliner-rpg-foundry-vtt/blob/main/system.json",
+  "manifest": "https://raw.githubusercontent.com/millerrichd/edgeliner-rpg-foundry-vtt/refs/heads/main/system.json",
   "download": "https://github.com/millerrichd/edgeliner-rpg-foundry-vtt/archive/refs/heads/main.zip",
   "background": "systems/edgeliner-rpg/assets/anvil-impact.png",
   "primaryTokenAttribute": "health",
