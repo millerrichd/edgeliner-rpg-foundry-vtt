@@ -1,0 +1,7 @@
+{
+  "project": {
+    "type": "system",
+    "premium": false
+  },
+  "includes": ["LICENSE.txt", "README.md", "templates/"]
+}

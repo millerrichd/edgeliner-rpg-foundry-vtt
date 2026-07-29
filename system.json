@@ -2,31 +2,61 @@
   "id": "edgeliner-rpg",
   "title": "Edgeliner RPG",
   "description": "The Edgeliner RPG system for FoundryVTT!",
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": 14,
+    "verified": "14.365"
+  },
+  "url": "https://github.com/millerrichd/edgeliner-rpg-foundry-vtt",
+  "manifest": "https://raw.githubusercontent.com/millerrichd/edgeliner-rpg-foundry-vtt/refs/heads/main/system.json",
+  "download": "https://github.com/millerrichd/edgeliner-rpg-foundry-vtt/archive/refs/heads/main.zip",
   "authors": [
     {
       "name": "Richard Miller",
       "discord": "turtletopgames"
     }
   ],
-  "url": "Replace this with a link to your public repository",
-  "license": "LICENSE",
-  "readme": "README.md",
-  "bugs": "Replace this with a link to file issues or tickets",
-  "changelog": "CHANGELOG.md",
-  "media": [
-    {
-      "type": "setup",
-      "url": "systems/edgeliner-rpg/assets/anvil-impact.png",
-      "thumbnail": "systems/edgeliner-rpg/assets/anvil-impact.png"
-    }
+  "esmodules": [
+    "module/edgeliner-rpg.mjs"
   ],
-  "version": "0.0.1",
-  "compatibility": {
-    "minimum": 14,
-    "verified": "14.365"
+  "styles": [
+    "css/edgeliner-rpg.css"
+  ],
+  "documentTypes": {
+    "ActiveEffect": {
+      "condition": {},
+      "enchantment": {}
+    },
+    "Actor": {
+      "character": {
+        "htmlFields": ["details.biography.value", "details.biography.public", "bastion.description"]
+      },
+      "npc": {
+        "htmlFields": ["details.biography.value", "details.biography.public"]
+      }
+    },
+    "ChatMessage": {
+      "generic": {}
+    },
+    "Item": {
+      "ancestry": {
+        "filePathFields": {
+          "advancement.*.icon": ["IMAGE"]
+        },
+        "htmlFields": ["advancement.*.hint", "description.value", "description.chat"]
+      }
+    },
+    "JournalEntryPage": {
+      "map": {}
+    },
+    "RegionBehavior": {
+      "edgeliner-rpg.applyActiveEffect": {},
+      "edgeliner-rpg.difficultTerrain": {},
+      "edgeliner-rpg.rotateArea": {}
+    }
   },
-  "esmodules": ["module/edgeliner-rpg.mjs"],
-  "styles": ["css/edgeliner-rpg.css"],
+  "packs": [],
+  "packFolders": [],
   "languages": [
     {
       "lang": "en",
@@ -34,12 +64,19 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [],
-  "packFolders": [],
-  "socket": false,
-  "manifest": "https://raw.githubusercontent.com/millerrichd/edgeliner-rpg-foundry-vtt/refs/heads/main/system.json",
-  "download": "https://github.com/millerrichd/edgeliner-rpg-foundry-vtt/archive/refs/heads/main.zip",
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/edgeliner-rpg/assets/anvil-impact.png",
+      "thumbnail": "systems/edgeliner-rpg/assets/anvil-impact.png"
+    }
+  ],
+  "socket": true,
+  "grid": {
+    "distance": 5,
+    "units": "ft"
+  },
+  "primaryTokenAttribute": "stamina",
+  "secondaryTokenAttribute": "drain",
   "background": "systems/edgeliner-rpg/assets/anvil-impact.png",
-  "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power"
 }

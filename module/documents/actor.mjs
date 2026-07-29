@@ -2,7 +2,7 @@
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
-export class SentiusRPGActor extends Actor {
+export class EdgelinerRPGActor extends Actor {
   /** @override */
   prepareData() {
     // Prepare data for the actor. Calling the super version of this executes
@@ -35,7 +35,7 @@ export class SentiusRPGActor extends Actor {
     const spellActions = actorData.system.spellActions;
     const spellPowers = actorData.system.spellPowers;
     const spellTargets = actorData.system.spellTargets;
-    const flags = actorData.flags.sentiusrpg || {};
+    const flags = actorData.flags.edgelinerrpg || {};
 
     console.log("prepareDerivedDataActor1", actorData);
 

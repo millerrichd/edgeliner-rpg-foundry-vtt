@@ -1,6 +1,6 @@
-import SentiusRPGActorBase from "./base-actor.mjs";
+import EdgelinerRPGActorBase from "./base-actor.mjs";
 
-export default class SentiusRPGCharacter extends SentiusRPGActorBase {
+export default class EdgelinerRPGCharacter extends EdgelinerRPGActorBase {
 
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -14,7 +14,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     });
 
     // Iterate over ability names and create a new SchemaField for each.
-    schema.abilities = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.abilities).reduce((obj, ability) => {
+    schema.abilities = new fields.SchemaField(Object.keys(CONFIG.EDGELINER_RPG.abilities).reduce((obj, ability) => {
       obj[ability] = new fields.SchemaField({
         die: new fields.StringField({ required: true, initial: "d10" }),
         bonus: new fields.NumberField({ ...requiredInteger, initial: 2, min: 0, max: 12}),
@@ -26,7 +26,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     }, {}));
 
     // Iterate over derived ability names and create a new SchemaField for each.
-    schema.derivedAbilitiesValue = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.derivedAbilitiesValue).reduce((obj, ability) => {
+    schema.derivedAbilitiesValue = new fields.SchemaField(Object.keys(CONFIG.EDGELINER_RPG.derivedAbilitiesValue).reduce((obj, ability) => {
       obj[ability] = new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 2, min: 0, max: 12})
       });
@@ -34,7 +34,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     }, {}));
 
     // Iterate over derived ability names and create a new SchemaField for each.
-    schema.derivedAbilitiesPool = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.derivedAbilitiesPool).reduce((obj, ability) => {
+    schema.derivedAbilitiesPool = new fields.SchemaField(Object.keys(CONFIG.EDGELINER_RPG.derivedAbilitiesPool).reduce((obj, ability) => {
       obj[ability] = new fields.SchemaField({
         value: new fields.StringField({ required: true, initial: "d4" }),
         current: new fields.StringField({ required: true, initial: "" })
@@ -43,7 +43,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     }, {}));
 
     // Iterate over skill names and create a new SchemaField for each.
-    schema.skills = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.skills).reduce((obj, skill) => {
+    schema.skills = new fields.SchemaField(Object.keys(CONFIG.EDGELINER_RPG.skills).reduce((obj, skill) => {
       let attr1 = 'agi';
       let attr2 = 'qui';
       if (skill === 'animalhandling') {
@@ -169,7 +169,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       return obj;
     }, {}));
 
-    schema.spellActions = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.spellActions).reduce((obj, spellAction) => {
+    schema.spellActions = new fields.SchemaField(Object.keys(CONFIG.EDGELINER_RPG.spellActions).reduce((obj, spellAction) => {
       obj[spellAction] = new fields.SchemaField({
         attr1: new fields.StringField({ required: true, initial: "rea" }),
         attr2: new fields.StringField({ required: true, initial: "wil" }),
@@ -194,7 +194,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       return obj;
     }, {}));
 
-    schema.spellPowers = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.spellPowers).reduce((obj, spellPower) => {
+    schema.spellPowers = new fields.SchemaField(Object.keys(CONFIG.EDGELINER_RPG.spellPowers).reduce((obj, spellPower) => {
       obj[spellPower] = new fields.SchemaField({
         attr1: new fields.StringField({ required: true, initial: "rea" }),
         attr2: new fields.StringField({ required: true, initial: "wil" }),
@@ -219,7 +219,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       return obj;
     }, {}));
     
-    schema.spellTargets = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.spellTargets).reduce((obj, spellTarget) => {
+    schema.spellTargets = new fields.SchemaField(Object.keys(CONFIG.EDGELINER_RPG.spellTargets).reduce((obj, spellTarget) => {
       obj[spellTarget] = new fields.SchemaField({
         attr1: new fields.StringField({ required: true, initial: "rea" }),
         attr2: new fields.StringField({ required: true, initial: "wil" }),

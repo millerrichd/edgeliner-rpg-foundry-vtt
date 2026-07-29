@@ -1,12 +1,12 @@
 // Import document classes.
-import { SentiusRPGActor } from './documents/actor.mjs';
-import { SentiusRPGItem } from './documents/item.mjs';
+import { EdgelinerRPGActor } from './documents/actor.mjs';
+import { EdgelinerRPGItem } from './documents/item.mjs';
 // Import sheet classes.
-import { SentiusRPGActorSheet } from './sheets/actor-sheet.mjs';
-import { SentiusRPGItemSheet } from './sheets/item-sheet.mjs';
+import { EdgelinerRPGActorSheet } from './sheets/actor-sheet.mjs';
+import { EdgelinerRPGItemSheet } from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
-import { SENTIUS_RPG } from './helpers/config.mjs';
+import { EDGELINER_RPG } from './helpers/config.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
 
@@ -17,14 +17,14 @@ import * as models from './data/_module.mjs';
 Hooks.once('init', function () {
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
-  game.sentiusrpg = {
-    SentiusRPGActor,
-    SentiusRPGItem,
+  game.edgelinerrpg = {
+    EdgelinerRPGActor,
+    EdgelinerRPGItem,
     rollItemMacro,
   };
 
   // Add custom constants for configuration.
-  CONFIG.SENTIUS_RPG = SENTIUS_RPG;
+  CONFIG.EDGELINER_RPG = EDGELINER_RPG;
 
   /**
    * Set an initiative formula for the system
@@ -36,26 +36,26 @@ Hooks.once('init', function () {
   };
 
   // Define custom Document and DataModel classes
-  CONFIG.Actor.documentClass = SentiusRPGActor;
+  CONFIG.Actor.documentClass = EdgelinerRPGActor;
 
   // Note that you don't need to declare a DataModel
   // for the base actor/item classes - they are included
   // with the Character/NPC as part of super.defineSchema()
   CONFIG.Actor.dataModels = {
-    character: models.SentiusRPGCharacter,
-    npc: models.SentiusRPGNPC
+    character: models.EdgelinerRPGCharacter,
+    npc: models.EdgelinerRPGNPC
   }
-  CONFIG.Item.documentClass = SentiusRPGItem;
+  CONFIG.Item.documentClass = EdgelinerRPGItem;
   CONFIG.Item.dataModels = {
-    armor: models.SentiusRPGArmor,
-    cybernetic: models.SentiusRPGCybernetic,
-    hindrance: models.SentiusRPGHindrance,
-    item: models.SentiusRPGItem,
-    powerarmor: models.SentiusRPGPowerArmor,
-    trait: models.SentiusRPGTrait,
-    vehicle: models.SentiusRPGVehicle,
-    vehicleweapon: models.SentiusRPGVehicleWeapon,
-    weapon: models.SentiusRPGWeapon
+    armor: models.EdgelinerRPGArmor,
+    cybernetic: models.EdgelinerRPGCybernetic,
+    hindrance: models.EdgelinerRPGHindrance,
+    item: models.EdgelinerRPGItem,
+    powerarmor: models.EdgelinerRPGPowerArmor,
+    trait: models.EdgelinerRPGTrait,
+    vehicle: models.EdgelinerRPGVehicle,
+    vehicleweapon: models.EdgelinerRPGVehicleWeapon,
+    weapon: models.EdgelinerRPGWeapon
   }
 
   // Active Effects are never copied to the Actor,
@@ -65,14 +65,14 @@ Hooks.once('init', function () {
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('edgeliner-rpg', SentiusRPGActorSheet, {
+  Actors.registerSheet('edgeliner-rpg', EdgelinerRPGActorSheet, {
     makeDefault: true,
-    label: 'SENTIUS_RPG.SheetLabels.Actor',
+    label: 'EDGELINER_RPG.SheetLabels.Actor',
   });
   Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('edgeliner-rpg', SentiusRPGItemSheet, {
+  Items.registerSheet('edgeliner-rpg', EdgelinerRPGItemSheet, {
     makeDefault: true,
-    label: 'SENTIUS_RPG.SheetLabels.Item',
+    label: 'EDGELINER_RPG.SheetLabels.Item',
   });
 
   // Preload Handlebars templates.
@@ -120,7 +120,7 @@ async function createItemMacro(data, slot) {
   const item = await Item.fromDropData(data);
 
   // Create the macro command using the uuid.
-  const command = `game.sentiusrpg.rollItemMacro("${data.uuid}");`;
+  const command = `game.edgelinerrpg.rollItemMacro("${data.uuid}");`;
   let macro = game.macros.find(
     (m) => m.name === item.name && m.command === command
   );

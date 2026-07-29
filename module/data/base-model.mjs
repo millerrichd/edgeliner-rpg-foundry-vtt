@@ -1,4 +1,4 @@
-export default class SentiusRPGDataModel extends foundry.abstract.TypeDataModel {
+export default class EdgelinerRPGDataModel extends foundry.abstract.TypeDataModel {
   /**
    * Convert the schema to a plain object.
    * 

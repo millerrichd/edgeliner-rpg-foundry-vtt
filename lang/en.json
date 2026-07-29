@@ -1,5 +1,5 @@
 {
-  "SENTIUS_RPG": {
+  "EDGELINER_RPG": {
     "Ability": {
       "Agi": { "long": "Agility", "abbr": "agi" },
       "End": { "long": "Endurance", "abbr": "end" },
@@ -100,8 +100,8 @@
       "You": { "long": "You", "abbr": "you" }
     },
     "SheetLabels": {
-      "Actor": "SentiusRPG Actor Sheet",
-      "Item": "SentiusRPG Item Sheet"
+      "Actor": "EdgelinerRPG Actor Sheet",
+      "Item": "EdgelinerRPG Item Sheet"
     },
     "Item": {
       "Spell": {

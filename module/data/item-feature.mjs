@@ -1,3 +1,3 @@
-import SentiusRPGItemBase from "./base-item.mjs";
+import EdgelinerRPGItemBase from "./base-item.mjs";
 
-export default class SentiusRPGFeature extends SentiusRPGItemBase {}
+export default class EdgelinerRPGFeature extends EdgelinerRPGItemBase {}

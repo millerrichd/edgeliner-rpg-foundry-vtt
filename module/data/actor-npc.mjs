@@ -1,6 +1,6 @@
-import SentiusRPGActorBase from "./base-actor.mjs";
+import EdgelinerRPGActorBase from "./base-actor.mjs";
 
-export default class SentiusRPGNPC extends SentiusRPGActorBase {
+export default class EdgelinerRPGNPC extends EdgelinerRPGActorBase {
 
   static defineSchema() {
     const fields = foundry.data.fields;

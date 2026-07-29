@@ -1,6 +1,6 @@
-import SentiusRPGItemBase from "./base-item.mjs";
+import EdgelinerRPGItemBase from "./base-item.mjs";
 
-export default class SentiusRPGCybernetic extends SentiusRPGItemBase {
+export default class EdgelinerRPGCybernetic extends EdgelinerRPGItemBase {
 
   static defineSchema() {
     const fields = foundry.data.fields;

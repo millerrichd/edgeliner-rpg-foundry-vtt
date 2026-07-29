@@ -7,7 +7,7 @@ import {
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class SentiusRPGItemSheet extends ItemSheet {
+export class EdgelinerRPGItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -65,8 +65,8 @@ export class SentiusRPGItemSheet extends ItemSheet {
     context.system = itemData.system;
     context.flags = itemData.flags;
 
-    // Adding a pointer to CONFIG.SENTIUS_RPG
-    context.config = CONFIG.SENTIUS_RPG;
+    // Adding a pointer to CONFIG.EDGELINER_RPG
+    context.config = CONFIG.EDGELINER_RPG;
 
     // Prepare active effects for easier access
     context.effects = prepareActiveEffectCategories(this.item.effects);

@@ -43,17 +43,17 @@ export function prepareActiveEffectCategories(effects) {
   const categories = {
     temporary: {
       type: 'temporary',
-      label: game.i18n.localize('SENTIUS_RPG.Effect.Temporary'),
+      label: game.i18n.localize('EDGELINER_RPG.Effect.Temporary'),
       effects: [],
     },
     passive: {
       type: 'passive',
-      label: game.i18n.localize('SENTIUS_RPG.Effect.Passive'),
+      label: game.i18n.localize('EDGELINER_RPG.Effect.Passive'),
       effects: [],
     },
     inactive: {
       type: 'inactive',
-      label: game.i18n.localize('SENTIUS_RPG.Effect.Inactive'),
+      label: game.i18n.localize('EDGELINER_RPG.Effect.Inactive'),
       effects: [],
     },
   };

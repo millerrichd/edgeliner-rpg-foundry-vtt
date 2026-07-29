@@ -7,7 +7,7 @@ import {
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class SentiusRPGActorSheet extends ActorSheet {
+export class EdgelinerRPGActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -46,8 +46,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     context.system = actorData.system;
     context.flags = actorData.flags;
 
-    // Adding a pointer to CONFIG.SENTIUS_RPG
-    context.config = CONFIG.SENTIUS_RPG;
+    // Adding a pointer to CONFIG.EDGELINER_RPG
+    context.config = CONFIG.EDGELINER_RPG;
 
     // Prepare character data and items.
     if (actorData.type == 'character') {
