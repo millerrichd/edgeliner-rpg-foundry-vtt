@@ -9,8 +9,6 @@ export {default as EdgelinerRPGArmor} from "./item-armor.mjs";
 export {default as EdgelinerRPGCybernetic} from "./item-cybernetic.mjs";
 export {default as EdgelinerRPGHindrance} from "./item-hindrance.mjs";
 export {default as EdgelinerRPGItem} from "./item-item.mjs";
-export {default as EdgelinerRPGPowerArmor} from "./item-powerarmor.mjs";
-export {default as EdgelinerRPGTrait} from "./item-trait.mjs";
 export {default as EdgelinerRPGVehicle} from "./item-vehicle.mjs";
 export {default as EdgelinerRPGVehicleWeapon} from "./item-vehicleweapon.mjs";
 export {default as EdgelinerRPGWeapon} from "./item-weapon.mjs";
