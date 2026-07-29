@@ -2,7 +2,7 @@
   "id": "edgeliner-rpg",
   "title": "Edgeliner RPG",
   "description": "The Edgeliner RPG system for FoundryVTT!",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "compatibility": {
     "minimum": 14,
     "verified": "14.365"
