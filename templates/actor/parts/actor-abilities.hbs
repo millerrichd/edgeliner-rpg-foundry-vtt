@@ -1,87 +1,72 @@
 <section class="grid grid-2ol">
   <div class="abilities grid-start-1">
-    <table class="abilities">
-      <thead>
-        <tr>
-          <th>Ability</th>
-          <th width="30"></th>
-          <th width="100">Die | Bonus</th>
-          <th width="30"></th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each system.abilities as |ability key|}}
-        <tr>
-          <td>{{localize (lookup @root.config.abilities key)}}</td>
-          <td class="align-right">
-            <div class="tooltip">
-              <img src="systems/edgeliner-rpg/assets/increment-arrow.webp" class="img-adjusters increase-ability" data-ability="{{key}}">
-              <span class="tooltiptext">
-                <span class="tooltip-label">Upgrade</span>
-              </span>
-            </div>
-          </td>
-          <td class="align-center">{{ability.die}}+{{ability.bonus}}</td>
-          <td class="align-left">
-            <div class="tooltip">
-              <img src="systems/edgeliner-rpg/assets/decrement-arrow.webp" class="img-adjusters decrease-ability" data-ability="{{key}}">
-              <span class="tooltiptext">
-                <span class="tooltip-label">Downgrade</span>
-              </span>
-            </div>
-          </td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
-    <table>
-      <thead>
-        <tr>
-          <th>Derived Ability Values</th>
-          <th width="100">Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each system.derivedAbilitiesValue as |ability key|}}
-        {{#if (eq key 'stabilityCurrent')}}
-        {{else}}
-        <tr>
-          <td class="{{key}}">{{localize (lookup @root.config.derivedAbilitiesValue key)}}</td>
-          <td class="align-center">{{ability.value}}</td>
-        </tr>
-        {{/if}}
-        {{/each}}
-      </tbody>
-    </table>
-    <table>
-      <thead>
-        <tr>
-          <th>Derived Ability Pools</th>
-          <th width="100">Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each system.derivedAbilitiesPool as |ability key|}}
-        <tr>
-          <td>{{localize (lookup @root.config.derivedAbilitiesPool key)}}</td>
-          <td class="align-center">{{ability.value}}</td>
-        </tr>
-        {{/each}}
-    </table>
+    <div class="abilities-header">
+      <h4>Abilities</h4>
+      {{#each system.abilities as |ability key|}}
+      <div class="grid grid-2ol">
+        <div class="grid-start-1">
+          {{localize (lookup @root.config.abilities key)}}
+        </div>
+        <div class="grid-start-2">
+          <div class="fa fa-plus-square increase-ability" data-ability="{{key}}"></div>
+          {{ability.die}}+{{ability.bonus}}
+          <div class="fa fa-minus-square decrease-ability" data-ability="{{key}}"></div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
   </div>
   <div class="derived-abilities grid-start-2">
-
+    <div class="abilities-header">
+      <h4>Derived Abilities</h4>
+      <div class="grid grid-2ol">
+        <div class="grid-start-1">Drain</div>
+        <div class="grid-start-2">{{system.derivedAbilitiesValue.drainCurrent.value}}/{{system.derivedAbilitiesValue.drainMax.value}}</div>
+      </div>
+      <div class="grid grid-2ol">
+        <div class="grid-start-1">Stamina</div>
+        <div class="grid-start-2">{{system.derivedAbilitiesValue.staminaCurrent.value}}/{{system.derivedAbilitiesValue.staminaMax.value}}</div>
+      </div>
+      <div class="grid grid-2ol">
+        <div class="grid-start-1">Implants</div>
+        <div class="grid-start-2">{{system.derivedAbilitiesValue.implantCurrent.value}}/{{system.derivedAbilitiesValue.implantMax.value}}</div>
+      </div>
+      <div class="grid grid-2ol">
+        <div class="grid-start-1">Wounds</div>
+        <div class="grid-start-2">{{system.derivedAbilitiesValue.wounds.value}}</div>
+      </div>
+      <div class="grid grid-2ol">
+        <div class="grid-start-1">Thresholds</div>
+        <div class="grid-start-2">{{system.derivedAbilitiesValue.thresholdBase.value}}/{{system.derivedAbilitiesValue.thresholdStep1.value}}/{{system.derivedAbilitiesValue.thresholdStep2.value}}/{{system.derivedAbilitiesValue.thresholdStep3.value}}</div>
+      </div>
+      <div class="grid grid-2ol">
+        <div class="grid-start-1">Encumbrance</div>
+        <div class="grid-start-2">{{system.derivedAbilitiesValue.encumbranceCurrent.value}}/{{system.derivedAbilitiesValue.encumbranceMax.value}}</div>
+      </div>
+    </div>
+  </div>
   {{!-- For the main hindrance/traits list, span the right two columns --}}
   {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
-    <section>
-      <label class="resource-label">Hindrances</label>
-      {{> "systems/edgeliner-rpg/templates/actor/parts/actor-hindrances.hbs"}}
-    </section>
-
-    <section>
-      <label class="resource-label">Traits</label>
-      {{> "systems/edgeliner-rpg/templates/actor/parts/actor-traits.hbs"}}
-    </section>
-
+  <div class="grid grid-2ol">
+    <div class="grid-start-1">
+      <section>
+        <h4 class="resource-label">Hindrances {{hindrancePoints}}/4</h4>
+        {{> "systems/edgeliner-rpg/templates/actor/parts/actor-hindrances.hbs"}}
+      </section>
+    </div>
+    <div class="grid-start-2">
+      <section>
+        <h4 class="resource-label">Talents {{talentCount}}/{{talentMax}}</h4>
+        {{> "systems/edgeliner-rpg/templates/actor/parts/actor-talents.hbs"}}
+      </section>
+    </div>
+  </div>
+  <div class="grid grid-2ol">
+    <div class="grid-start-1">
+      <section>
+        <h4 class="resource-label">Ancestry</h4>
+        {{> "systems/edgeliner-rpg/templates/actor/parts/actor-ancestry.hbs"}}
+      </section>
+    </div>
   </div>
 </section>

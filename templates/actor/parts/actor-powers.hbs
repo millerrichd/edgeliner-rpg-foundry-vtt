@@ -110,7 +110,7 @@
       <td></td>
       <td colspan="7">
         {{#if (eq key "armor")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-armor.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-armor.hbs"
             spell=spell
             key=key
             costArmorRating=../system.spellWordsCost.spellActionArmor.costArmorRating
@@ -118,21 +118,21 @@
             costArmorDuration=../system.spellWordsCost.spellActionArmor.costArmorDuration
           }}
         {{else if (eq key "banish")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-banish.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-banish.hbs"
             spell=spell
             key=key
             costBanishResistance=../system.spellWordsCost.spellActionBanish.costBanishResistance
             costBanishSize=../system.spellWordsCost.spellActionBanish.costBanishSize
           }}
         {{else if (eq key "control")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-control.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-control.hbs"
             spell=spell
             key=key
             costControlResistance=../system.spellWordsCost.spellActionControl.costControlResistance
             costControlDuration=../system.spellWordsCost.spellActionControl.costControlDuration
           }}
         {{else if (eq key "create")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-create.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-create.hbs"
             spell=spell
             key=key
             costCreateSize=../system.spellWordsCost.spellActionCreate.costCreateSize
@@ -140,7 +140,7 @@
             costCreateDuration=../system.spellWordsCost.spellActionCreate.costCreateDuration
           }}
         {{else if (eq key "destroy")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-destroy.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-destroy.hbs"
             spell=spell
             key=key
             costDestroyNumber=../system.spellWordsCost.spellActionDestroy.costDestroyNumber
@@ -148,20 +148,20 @@
             costDamageResistance=../system.spellWordsCost.spellActionDestroy.costDamageResistance
           }}
         {{else if (eq key "repair")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-repair.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-repair.hbs"
             spell=spell
             key=key
             costRepairNumber=../system.spellWordsCost.spellActionRepair.costRepairNumber
           }}
         {{else if (eq key "shield")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-shield.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-shield.hbs"
             spell=spell
             key=key
             costShieldResistance=../system.spellWordsCost.spellActionShield.costShieldResistance
             costShieldDuration=../system.spellWordsCost.spellActionShield.costShieldDuration
           }}
         {{else if (eq key "summon")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-summon.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-summon.hbs"
             spell=spell
             key=key
             costSummonSize=../system.spellWordsCost.spellActionSummon.costSummonSize
@@ -170,7 +170,7 @@
             costSummonDisappears=../system.spellWordsCost.spellActionSummon.costSummonDisappears
           }}
         {{else if (eq key "transform")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-transform.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-transform.hbs"
             spell=spell
             key=key
             costTransformSize=../system.spellWordsCost.spellActionTransform.costTransformSize
@@ -276,119 +276,65 @@
       <td></td>
       <td colspan="7">
         {{#if (eq key "air")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-air.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-air.hbs"
             spell=spell
             key=key
             costAirDamageDie=../system.spellWordsCost.spellPowerAir.costAirDamageDie
           }}
         {{else if (eq key "animal")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-animal.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-animal.hbs"
             spell=spell
             key=key
             costAnimalShape=../system.spellWordsCost.spellPowerAnimal.costAnimalShape
             costAnimalDamageDie=../system.spellWordsCost.spellPowerAnimal.costAnimalDamageDie
           }}
         {{else if (eq key "dark")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-dark.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-dark.hbs"
             spell=spell
             key=key
             costDarkFieldRange=../system.spellWordsCost.spellPowerDark.costDarkFieldRange
             costDarkDamageDie=../system.spellWordsCost.spellPowerDark.costDarkDamageDie
           }}
         {{else if (eq key "earth")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-earth.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-earth.hbs"
             spell=spell
             key=key
             costEarthDamageDie=../system.spellWordsCost.spellPowerEarth.costEarthDamageDie
           }}
         {{else if (eq key "fire")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-fire.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-fire.hbs"
             spell=spell
             key=key
             costFireDamageDie=../system.spellWordsCost.spellPowerFire.costFireDamageDie
           }}
         {{else if (eq key "force")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-force.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-force.hbs"
             spell=spell
             key=key
             costForceDamageDie=../system.spellWordsCost.spellPowerForce.costForceDamageDie
           }}
         {{else if (eq key "light")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-light.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-light.hbs"
             spell=spell
             key=key
             costLightFieldRange=../system.spellWordsCost.spellPowerLight.costLightFieldRange
             costLightDamageDie=../system.spellWordsCost.spellPowerLight.costLightDamageDie
           }}
         {{else if (eq key "plant")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-plant.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-plant.hbs"
             spell=spell
             key=key
             costPlantShape=../system.spellWordsCost.spellPowerPlant.costPlantShape
             costPlantDamageDie=../system.spellWordsCost.spellPowerPlant.costPlantDamageDie
           }}
         {{else if (eq key "water")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-water.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-water.hbs"
             spell=spell
             key=key
             costWaterDamageDie=../system.spellWordsCost.spellPowerWater.costWaterDamageDie
           }}
-        {{else if (eq key "ash")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-ash.hbs"
-            spell=spell
-            key=key
-            costAshDamageDie=../system.spellWordsCost.spellPowerAsh.costAshDamageDie
-            costAshCover=../system.spellWordsCost.spellPowerAsh.costAshCover
-          }}
-        {{else if (eq key "fissure")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-fissure.hbs"
-            spell=spell
-            key=key
-            costFissureDamageDie=../system.spellWordsCost.spellPowerFissure.costFissureDamageDie
-            costFissureWeaken=../system.spellWordsCost.spellPowerFissure.costFissureWeaken
-          }}
-        {{else if (eq key "lava")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-lava.hbs"
-            spell=spell
-            key=key
-            costLavaDamageDie=../system.spellWordsCost.spellPowerLava.costLavaDamageDie
-            costLavaWeaken=../system.spellWordsCost.spellPowerLava.costLavaWeaken
-          }}
-        {{else if (eq key "mist")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-mist.hbs"
-            spell=spell
-            key=key
-            costMistDamageDie=../system.spellWordsCost.spellPowerMist.costMistDamageDie
-            costMistCover=../system.spellWordsCost.spellPowerMist.costMistCover
-          }}
-        {{else if (eq key "mud")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-mud.hbs"
-            spell=spell
-            key=key
-            costMudReducedSpeed=../system.spellWordsCost.spellPowerMud.costMudReducedSpeed
-            costMudDamageDie=../system.spellWordsCost.spellPowerMud.costMudDamageDie
-          }}
-        {{else if (eq key "steam")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-steam.hbs"
-            spell=spell
-            key=key
-            costSteamDamageDie=../system.spellWordsCost.spellPowerSteam.costSteamDamageDie
-            costSteamCover=../system.spellWordsCost.spellPowerSteam.costSteamCover
-          }}
-        {{else if (eq key "angelic")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-angelic.hbs"
-            spell=spell
-            key=key
-            costAngelicDamageDie=../system.spellWordsCost.spellPowerAngelic.costAngelicDamageDie
-          }}
-        {{else if (eq key "demonic")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-demonic.hbs"
-            spell=spell
-            key=key
-            costDemonicDamageDie=../system.spellWordsCost.spellPowerDemonic.costDemonicDamageDie
-          }}
         {{else if (eq key "spirit")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-spirit.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-spirit.hbs"
             spell=spell
             key=key
             costSpiritDamageDie=../system.spellWordsCost.spellPowerSpirit.costSpiritDamageDie
@@ -493,31 +439,31 @@
       <td></td>
       <td colspan="7">
         {{#if (eq key "it")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-it.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-it.hbs"
             spell=spell
             key=key
             costItTarget=../system.spellWordsCost.spellTargetIt.costItTarget
           }}
         {{else if (eq key "me")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-me.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-me.hbs"
             spell=spell
             key=key
             costMeTarget=../system.spellWordsCost.spellTargetMe.costMeTarget
           }}
         {{else if (eq key "them")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-them.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-them.hbs"
             spell=spell
             key=key
             costThemTarget=../system.spellWordsCost.spellTargetThem.costThemTarget
           }}
         {{else if (eq key "there")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-there.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-there.hbs"
             spell=spell
             key=key
             costThereTarget=../system.spellWordsCost.spellTargetThere.costThereTarget
           }}
         {{else if (eq key "you")}}
-          {{> "systems/edgeliner-rpg/templates/actor/parts/spellenergies/actor-spellenergy-you.hbs"
+          {{> "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-you.hbs"
             spell=spell
             key=key
             costYouTarget=../system.spellWordsCost.spellTargetYou.costYouTarget

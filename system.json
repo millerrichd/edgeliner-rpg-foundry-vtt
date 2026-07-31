@@ -2,7 +2,7 @@
   "id": "edgeliner-rpg",
   "title": "Edgeliner RPG",
   "description": "The Edgeliner RPG system for FoundryVTT!",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "compatibility": {
     "minimum": 14,
     "verified": "14.365"
@@ -40,10 +40,46 @@
     },
     "Item": {
       "ancestry": {
-        "filePathFields": {
-          "advancement.*.icon": ["IMAGE"]
-        },
-        "htmlFields": ["advancement.*.hint", "description.value", "description.chat"]
+        "htmlFields": ["description"]
+      },
+      "armor": {
+        "htmlFields": ["description"]
+      },
+      "cyberdeck": {
+        "htmlFields": ["description"]
+      },
+      "cybernetic": {
+        "htmlFields": ["description"]
+      },
+      "hindrance": {
+        "htmlFields": ["description"]
+      },
+      "item": {
+        "htmlFields": ["description"]
+      },
+      "cyberdeckModule": {
+        "htmlFields": ["description"]
+      },
+      "cyberdeckProgram": {
+        "htmlFields": ["description"]
+      },
+      "drone": {
+        "htmlFields": ["description"]
+      },
+      "spell": {
+        "htmlFields": ["description"]
+      },
+      "talent": {
+        "htmlFields": ["description"]
+      },
+      "vehicle": {
+        "htmlFields": ["description"]
+      },
+      "vehicleweapon": {
+        "htmlFields": ["description"]
+      },
+      "weapon": {
+        "htmlFields": ["description"]
       }
     },
     "JournalEntryPage": {

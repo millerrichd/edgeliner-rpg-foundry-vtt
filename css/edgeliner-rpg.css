@@ -20,6 +20,19 @@
   padding: 0;
 }
 
+.skills-columns {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.skills-column {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .grid-3col {
   grid-column: span 3/span 3;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -239,10 +252,34 @@
   position: relative;
   flex: 0;
 }
-.edgeliner-rpg .sheet-body,
+.edgeliner-rpg .sheet-body {
+  flex: 1;
+  min-height: 0;
+}
 .edgeliner-rpg .sheet-body .tab,
 .edgeliner-rpg .sheet-body .tab .editor {
   height: 100%;
+}
+.edgeliner-rpg .sheet-body .tab {
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.edgeliner-rpg .power-build > summary {
+  cursor: pointer;
+  padding: 2px 0;
+}
+.edgeliner-rpg .power-build > summary::marker {
+  color: inherit;
+}
+.edgeliner-rpg .power-category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 4px 0;
+}
+.edgeliner-rpg .power-option {
+  display: block;
+  white-space: nowrap;
 }
 .edgeliner-rpg .tox .tox-editor-container {
   background: #fff;

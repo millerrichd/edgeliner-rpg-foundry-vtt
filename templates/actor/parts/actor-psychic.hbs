@@ -1,0 +1,38 @@
+<h4>Psychic Powers ({{system.abilities.power.die}}+{{system.abilities.power.bonus}})</h4>
+<label>Rank A = 1-3, Rank B = 4-5, and Rank C = 6</label>
+<hr/>
+{{#each config.psychicPowerGroups as |powers groupKey|}}
+  <h5>{{localize (lookup @root.config.skillsPowerPsychic groupKey)}} ({{lookup (lookup @root.system.skillsPowerPsychic groupKey) 'value'}})</h5>
+
+  {{#each powers as |power powerKey|}}
+    <details class="power-build">
+      <summary>
+        <strong>{{power.label}}</strong>
+        &mdash; CPs Spent: {{lookup (lookup @root.system.psychicPowerTotals groupKey) powerKey}} (TN {{lookup (lookup @root.system.psychicPowerTN groupKey) powerKey}})
+      </summary>
+
+      <div class="power-base">
+        <strong>Base</strong>: {{power.base}} CPs
+      </div>
+
+      {{#each power.categories as |category categoryKey|}}
+        <div class="power-category">
+          <strong>{{category.label}}</strong>
+          {{#each category.options as |option|}}
+            <label class="power-option">
+              <input
+                type="radio"
+                name="system.psychicPowers.{{groupKey}}.{{powerKey}}.{{categoryKey}}"
+                value="{{option.cost}}"
+                data-dtype="Number"
+                {{#if (eq (lookup (lookup (lookup @root.system.psychicPowers groupKey) powerKey) categoryKey) option.cost)}}checked{{/if}}
+              />
+              {{option.label}} ({{option.cost}} {{#if (eq option.cost 1)}}CP{{else}}CPs{{/if}})
+            </label>
+          {{/each}}
+        </div>
+      {{/each}}
+    </details>
+    <hr/>
+  {{/each}}
+{{/each}}

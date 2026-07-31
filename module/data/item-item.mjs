@@ -7,6 +7,13 @@ export default class EdgelinerRPGItem extends EdgelinerRPGItemBase {
     const requiredInteger = { required: true, nullable: false, integer: true };
     const schema = super.defineSchema();
 
+    schema.size = new fields.StringField({
+      required: true,
+      initial: 'normal',
+      choices: ['tiny', 'small', 'normal', 'large']
+    });
+    schema.resourceCost = EdgelinerRPGItemBase.defineResourceCostSchema();
+
     // Break down roll formula into three independent fields
     schema.gear = new fields.SchemaField({
       resourceDie: new fields.StringField({ initial: "d4" }),

@@ -15,6 +15,16 @@
         /></h1>
       <div class='grid grid-1col'>
         <div class='resource'>
+          <label class='resource-label'>Size</label>
+          <select name='system.size'>
+            {{#each config.itemSizes as |label key|}}
+              <option value='{{key}}' {{#if (eq ../system.size key)}}selected{{/if}}>{{localize label}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+      <div class='grid grid-1col'>
+        <div class='resource'>
           <label class='resource-label'>Resource Cost</label>
           <select name='system.resourceCost.die'>
             {{#each config.resourceCostDice as |die|}}
@@ -56,57 +66,75 @@
     {{! Attributes Tab }}
     <div class='tab attributes' data-group='primary' data-tab='attributes'>
       <div class='resource'>
-        <div class='grid grid-2col'>
+        <div class='grid grid-3col'>
           <div class='grid-span-1'>
-            <label class='resource-label'>Threshold Base</label>
-            <input
-              type='text'
-              name='system.vehicle.thresholdBase'
-              value='{{system.vehicle.thresholdBase}}'
-              data-dtype='Number'
-            />
-          </div>
-          <div class='grid-span-1'>
-            <label class='resource-label'>Threshold (+6/+8/+10)</label>
-            <span>{{system.vehicle.thresholdBase}}/{{system.vehicle.thresholdStep1}}/{{system.vehicle.thresholdStep2}}/{{system.vehicle.thresholdStep3}}</span>
-          </div>
-        </div>
-        <div class='grid grid-4col'>
-          <div class='grid-span-1'>
-            <label class='resource-label'>Armor</label>
-            <input
-              type='text'
-              name='system.vehicle.armor'
-              value='{{system.vehicle.armor}}'
-              data-dtype='Number'
-            />
+            <label class='resource-label'>Range</label>
+            <select name='system.cyberdeck.range'>
+              {{#each config.cyberdeckRanges as |label key|}}
+                <option value='{{key}}' {{#if (eq ../system.cyberdeck.range key)}}selected{{/if}}>{{localize label}}</option>
+              {{/each}}
+            </select>
           </div>
           <div class='grid-span-1'>
             <label class='resource-label'>Evasion</label>
             <input
               type='text'
-              name='system.vehicle.evasion'
-              value='{{system.vehicle.evasion}}'
+              name='system.cyberdeck.evasion'
+              value='{{system.cyberdeck.evasion}}'
               data-dtype='Number'
             />
           </div>
           <div class='grid-span-1'>
-            <label class='resource-label'>Handling</label>
+            <label class='resource-label'>Armor</label>
             <input
               type='text'
-              name='system.vehicle.handling'
-              value='{{system.vehicle.handling}}'
+              name='system.cyberdeck.armor'
+              value='{{system.cyberdeck.armor}}'
+              data-dtype='Number'
+            />
+          </div>
+        </div>
+        <div class='grid grid-3col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Damage</label>
+            <select name='system.cyberdeck.damageDie'>
+              {{#each config.dice as |die|}}
+                <option value='{{die}}' {{#if (eq ../system.cyberdeck.damageDie die)}}selected{{/if}}>{{die}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Memory</label>
+            <input
+              type='text'
+              name='system.cyberdeck.memory'
+              value='{{system.cyberdeck.memory}}'
               data-dtype='Number'
             />
           </div>
           <div class='grid-span-1'>
-            <label class='resource-label'>Mounts</label>
+            <label class='resource-label'>Modules</label>
             <input
               type='text'
-              name='system.vehicle.mounts'
-              value='{{system.vehicle.mounts}}'
+              name='system.cyberdeck.modules'
+              value='{{system.cyberdeck.modules}}'
               data-dtype='Number'
             />
+          </div>
+        </div>
+        <div class='grid grid-2col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Threshold Base</label>
+            <input
+              type='text'
+              name='system.cyberdeck.thresholdBase'
+              value='{{system.cyberdeck.thresholdBase}}'
+              data-dtype='Number'
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Threshold (+6/+8/+10)</label>
+            <span>{{system.cyberdeck.thresholdBase}}/{{system.cyberdeck.thresholdStep1}}/{{system.cyberdeck.thresholdStep2}}/{{system.cyberdeck.thresholdStep3}}</span>
           </div>
         </div>
       </div>

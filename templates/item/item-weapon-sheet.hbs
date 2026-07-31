@@ -1,9 +1,9 @@
-<form class='{{cssClass}}' autocomplete='off'>
+<div class='{{cssClass}}'>
   <header class='sheet-header'>
     <img
       class='profile-img'
       src='{{item.img}}'
-      data-edit='img'
+      data-action="editImage" data-edit='img'
       title='{{item.name}}'
     />
     <div class='header-fields'>
@@ -13,38 +13,29 @@
           value='{{item.name}}'
           placeholder='Name'
         /></h1>
-      <div class='grid grid-1col'>
         <div class='resource'>
-          <label class='resource-label'>Credits</label>
-          <input
-            type='text'
-            name='system.credits'
-            value='{{system.credits}}'
-            data-dtype='Number'
-          />
+          <label class='resource-label'>Size</label>
+          <select name='system.size'>
+            {{#each config.itemSizes as |label key|}}
+              <option value='{{key}}' {{#if (eq ../system.size key)}}selected{{/if}}>{{localize label}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class='resource'>
+          <label class='resource-label'>Resource Cost</label>
+          <select name='system.resourceCost.die'>
+            {{#each config.resourceCostDice as |die|}}
+              <option value='{{die}}' {{#if (eq ../system.resourceCost.die die)}}selected{{/if}}>{{die}}</option>
+            {{/each}}
+          </select>
+          <label class='resource-label'>Resource Cost Multiplier</label>
+          <select name='system.resourceCost.multiplier' data-dtype='Number'>
+            {{#each config.resourceCostMultipliers as |mult|}}
+              <option value='{{mult}}' {{#if (eq ../system.resourceCost.multiplier mult)}}selected{{/if}}>x{{mult}}</option>
+            {{/each}}
+          </select>
         </div>
       </div>
-      <div class='grid grid-2col'>
-        <div class='resource'>
-          <label class='resource-label'>Quantity</label>
-          <input
-            type='text'
-            name='system.quantity'
-            value='{{system.quantity}}'
-            data-dtype='Number'
-          />
-        </div>
-        <div class='resource'>
-          <label class='resource-label'>Weight</label>
-          <input
-            type='text'
-            name='system.weight'
-            value='{{system.weight}}'
-            data-dtype='Number'
-          />
-        </div>
-      </div>
-    </div>
   </header>
 
   {{! Sheet Tab Navigation }}
@@ -70,55 +61,61 @@
 
     {{! Attributes Tab }}
     <div class='tab attributes' data-group='primary' data-tab='attributes'>
-      {{! As you add new fields, add them in here! }}
       <div class='resource'>
-        <label class='resource-label'>Roll Formula:</label>
-        <span>{{system.formula}}</span>
-        <div class='grid grid-4col'>
+        <label class='resource-label'>Damage:</label>
+        <span>{{system.formulaLabel}}</span>
+        <div class='grid grid-3col'>
           <div class='grid-span-1'>
-            <label class='resource-label'>Number of Dice</label>
+            <label class='resource-label'>First Die</label>
+            <select name='system.weapon.firstDie'>
+              {{#each config.dice as |die|}}
+                <option value='{{die}}' {{#if (eq ../system.weapon.firstDie die)}}selected{{/if}}>{{die}}</option>
+              {{/each}}
+              <option value='might' {{#if (eq system.weapon.firstDie "might")}}selected{{/if}}>Might</option>
+            </select>
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Second Die</label>
+            <select name='system.weapon.die'>
+              {{#each config.dice as |die|}}
+                <option value='{{die}}' {{#if (eq ../system.weapon.die die)}}selected{{/if}}>{{die}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Bonus</label>
             <input
               type='text'
-              name='system.weapon.diceNum'
-              value='{{system.weapon.diceNum}}'
+              name='system.weapon.bonus'
+              value='{{system.weapon.bonus}}'
+              data-dtype='Number'
+            />
+          </div>
+        </div>
+        <div class='grid grid-4col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Stamina</label>
+            <input
+              type='text'
+              name='system.weapon.stamina'
+              value='{{system.weapon.stamina}}'
               data-dtype='Number'
             />
           </div>
           <div class='grid-span-1'>
-            <label class='resource-label'>Die Size</label>
-            <input
-              type='text'
-              name='system.weapon.diceSize'
-              value='{{system.weapon.diceSize}}'
-              data-dtype='String'
-            />
-          </div>
-          <div class='grid-span-2'>
-            <label class='resource-label'>Roll Modifier</label>
-            <input
-              type='text'
-              name='system.weapon.diceBonus'
-              value='{{system.weapon.diceBonus}}'
-              data-dtype='String'
-            />
-          </div>
-        </div>
-        <div class='grid grid-3col'>
-          <div class='grid-span-1'>
-            <label class='resource-label'>Range Increment</label>
-            <input
-              type='text'
-              name='system.weapon.rangeIncrement'
-              value='{{system.weapon.rangeIncrement}}'
-              data-dtype='String'
-            />
+            <label class='resource-label'>Damage Type</label>
+            <select name='system.weapon.damageType'>
+              {{#each config.weaponDamageTypes as |label key|}}
+                <option value='{{key}}' {{#if (eq ../system.weapon.damageType key)}}selected{{/if}}>{{localize label}}</option>
+              {{/each}}
+            </select>
           </div>
           <div class='grid-span-1'>
-            <label class='resource-label'>Capacity</label>
+            <label class='resource-label'>Magazine</label>
             <input
               type='text'
-              name='system.weapon.capacity'
-              value='{{system.weapon.capacity}}'
+              name='system.weapon.magazine'
+              value='{{system.weapon.magazine}}'
               data-dtype='Number'
             />
           </div>
@@ -132,56 +129,25 @@
             />
           </div>
         </div>
-        <div class='grid grid-3col'>
+        <div class='grid grid-2col'>
           <div class='grid-span-1'>
-            <label class='resource-label'>Attack Type</label>
-            <input
-              type='text'
-              name='system.weapon.attackType'
-              value='{{system.weapon.attackType}}'
-              data-dtype='String'
-            />
+            <label class='resource-label'>Range</label>
+            <select name='system.weapon.range'>
+              {{#each config.weaponRanges as |label key|}}
+                <option value='{{key}}' {{#if (eq ../system.weapon.range key)}}selected{{/if}}>{{localize label}}</option>
+              {{/each}}
+            </select>
           </div>
           <div class='grid-span-1'>
-            <label class='resource-label'>Damage Type</label>
-            <input
-              type='text'
-              name='system.weapon.damageType'
-              value='{{system.weapon.damageType}}'
-              data-dtype='String'
-            />
-          </div>
-          <div class='grid-span-1'>
-            <label class='resource-label'>Armor Piercing</label>
-            <input
-              type='text'
-              name='system.weapon.armorPiercing'
-              value='{{system.weapon.armorPiercing}}'
-              data-dtype='Number'
-            />
-          </div>
-        </div>
-        <div class='grid grid-3col'>
-          <div class='grid-span-1'>
-            <label class='resource-label'>Min Strength Bonus</label>
-            <input
-              type='text'
-              name='system.weapon.minStrengthBonus'
-              value='{{system.weapon.minStrengthBonus}}'
-              data-dtype='Number'
-            />
-          </div>
-          <div class='grid-span-2'>
-            <label class='resource-label'>Properties</label>
-            <input
-              type='text'
-              name='system.weapon.properties'
-              value='{{system.weapon.properties}}'
-              data-dtype='String'
-            />
+            <label class='resource-label'>Hands</label>
+            <select name='system.weapon.handedness'>
+              {{#each config.weaponHandedness as |label key|}}
+                <option value='{{key}}' {{#if (eq ../system.weapon.handedness key)}}selected{{/if}}>{{localize label}}</option>
+              {{/each}}
+            </select>
           </div>
         </div>
       </div>
     </div>
   </section>
-</form>
+</div>

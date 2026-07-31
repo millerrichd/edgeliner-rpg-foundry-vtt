@@ -1,6 +1,6 @@
 import EdgelinerRPGItemBase from "./base-item.mjs";
 
-export default class EdgelinerRPGVehicle extends EdgelinerRPGItemBase {
+export default class EdgelinerRPGDrone extends EdgelinerRPGItemBase {
 
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -9,7 +9,7 @@ export default class EdgelinerRPGVehicle extends EdgelinerRPGItemBase {
 
     schema.resourceCost = EdgelinerRPGItemBase.defineResourceCostSchema();
 
-    schema.vehicle = new fields.SchemaField({
+    schema.drone = new fields.SchemaField({
       thresholdBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 0 }),
       thresholdStep1: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
       thresholdStep2: new fields.NumberField({ ...requiredInteger, initial: 18, min: 0 }),
@@ -26,10 +26,10 @@ export default class EdgelinerRPGVehicle extends EdgelinerRPGItemBase {
   prepareDerivedData() {
     // Only the base threshold is set on the item; the steps follow the same +6/+8/+10
     // progression used for the actor's own thresholds.
-    const base = this.vehicle.thresholdBase;
-    this.vehicle.thresholdStep1 = base + 6;
-    this.vehicle.thresholdStep2 = base + 6 + 8;
-    this.vehicle.thresholdStep3 = base + 6 + 8 + 10;
+    const base = this.drone.thresholdBase;
+    this.drone.thresholdStep1 = base + 6;
+    this.drone.thresholdStep2 = base + 6 + 8;
+    this.drone.thresholdStep3 = base + 6 + 8 + 10;
   }
 
 }

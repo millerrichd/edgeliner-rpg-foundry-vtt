@@ -1,9 +1,9 @@
-<form class='{{cssClass}}' autocomplete='off'>
+<div class='{{cssClass}}'>
   <header class='sheet-header'>
     <img
       class='profile-img'
       src='{{item.img}}'
-      data-edit='img'
+      data-action="editImage" data-edit='img'
       title='{{item.name}}'
     />
     <div class='header-fields'>
@@ -15,24 +15,18 @@
         /></h1>
       <div class='grid grid-1col'>
         <div class='resource'>
-          <label class='resource-label'>Credits</label>
-          <input
-            type='text'
-            name='system.credits'
-            value='{{system.credits}}'
-            data-dtype='Number'
-          />
-        </div>
-      </div>
-      <div class='grid grid-2col'>
-        <div class='resource'>
-          <label class='resource-label'>Quantity</label>
-          <input
-            type='text'
-            name='system.quantity'
-            value='{{system.quantity}}'
-            data-dtype='Number'
-          />
+          <label class='resource-label'>Resource Cost</label>
+          <select name='system.resourceCost.die'>
+            {{#each config.resourceCostDice as |die|}}
+              <option value='{{die}}' {{#if (eq ../system.resourceCost.die die)}}selected{{/if}}>{{die}}</option>
+            {{/each}}
+          </select>
+          <label class='resource-label'>Resource Cost Multiplier</label>
+          <select name='system.resourceCost.multiplier' data-dtype='Number'>
+            {{#each config.resourceCostMultipliers as |mult|}}
+              <option value='{{mult}}' {{#if (eq ../system.resourceCost.multiplier mult)}}selected{{/if}}>x{{mult}}</option>
+            {{/each}}
+          </select>
         </div>
       </div>
     </div>
@@ -62,16 +56,15 @@
 
     {{! Attributes Tab }}
     <div class='tab attributes' data-group='primary' data-tab='attributes'>
-      {{! As you add new fields, add them in here! }}
       <div class='resource'>
         <div class='grid grid-1col'>
           <div class='grid-span-1'>
-            <label class='resource-label'>Properties</label>
+            <label class='resource-label'>Implant Cost</label>
             <input
               type='text'
-              name='system.armor.properties'
-              value='{{system.armor.properties}}'
-              data-dtype='String'
+              name='system.cybernetic.implantCost'
+              value='{{system.cybernetic.implantCost}}'
+              data-dtype='Number'
             />
           </div>
         </div>
@@ -83,5 +76,5 @@
       {{> "systems/edgeliner-rpg/templates/item/parts/item-effects.hbs"}}
     </div>
   </section>
-</form>
+</div>
 

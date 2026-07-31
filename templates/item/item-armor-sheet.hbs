@@ -1,9 +1,9 @@
-<form class='{{cssClass}}' autocomplete='off'>
+<div class='{{cssClass}}'>
   <header class='sheet-header'>
     <img
       class='profile-img'
       src='{{item.img}}'
-      data-edit='img'
+      data-action="editImage" data-edit='img'
       title='{{item.name}}'
     />
     <div class='header-fields'>
@@ -15,33 +15,28 @@
         /></h1>
       <div class='grid grid-1col'>
         <div class='resource'>
-          <label class='resource-label'>Credits</label>
-          <input
-            type='text'
-            name='system.credits'
-            value='{{system.credits}}'
-            data-dtype='Number'
-          />
+          <label class='resource-label'>Size</label>
+          <select name='system.size'>
+            {{#each config.itemSizes as |label key|}}
+              <option value='{{key}}' {{#if (eq ../system.size key)}}selected{{/if}}>{{localize label}}</option>
+            {{/each}}
+          </select>
         </div>
       </div>
-      <div class='grid grid-2col'>
+      <div class='grid grid-1col'>
         <div class='resource'>
-          <label class='resource-label'>Quantity</label>
-          <input
-            type='text'
-            name='system.quantity'
-            value='{{system.quantity}}'
-            data-dtype='Number'
-          />
-        </div>
-        <div class='resource'>
-          <label class='resource-label'>Weight</label>
-          <input
-            type='text'
-            name='system.weight'
-            value='{{system.weight}}'
-            data-dtype='Number'
-          />
+          <label class='resource-label'>Resource Cost</label>
+          <select name='system.resourceCost.die'>
+            {{#each config.resourceCostDice as |die|}}
+              <option value='{{die}}' {{#if (eq ../system.resourceCost.die die)}}selected{{/if}}>{{die}}</option>
+            {{/each}}
+          </select>
+          <label class='resource-label'>Resource Cost Multiplier</label>
+          <select name='system.resourceCost.multiplier' data-dtype='Number'>
+            {{#each config.resourceCostMultipliers as |mult|}}
+              <option value='{{mult}}' {{#if (eq ../system.resourceCost.multiplier mult)}}selected{{/if}}>x{{mult}}</option>
+            {{/each}}
+          </select>
         </div>
       </div>
     </div>
@@ -70,78 +65,58 @@
 
     {{! Attributes Tab }}
     <div class='tab attributes' data-group='primary' data-tab='attributes'>
-      {{! As you add new fields, add them in here! }}
       <div class='resource'>
-        <label class='resource-label'>Roll Formula:</label>
-        <span>{{system.formula}}</span>
-        <div class='grid-span-1'>
-          <label class='resource-label'>Current Resource</label>
-          <div class="align-left">
-            <img src="systems/edgeliner-rpg/assets/increment-arrow.webp" class="die-icon increase-armor">
-            <span class="die-word">{{system.armor.armorCurrentDie}}</span>
-            <img src="systems/edgeliner-rpg/assets/decrement-arrow.webp" class="die-icon decrease-armor">
+        <div class='grid grid-2col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Rating</label>
+            <input
+              type='text'
+              name='system.armor.rating'
+              value='{{system.armor.rating}}'
+              data-dtype='Number'
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Location</label>
+            <select name='system.armor.location'>
+              {{#each config.armorLocations as |label key|}}
+                <option value='{{key}}' {{#if (eq ../system.armor.location key)}}selected{{/if}}>{{localize label}}</option>
+              {{/each}}
+            </select>
           </div>
         </div>
-        <div class='grid grid-3col'>
+        <div class='grid grid-2col'>
           <div class='grid-span-1'>
-            <label class='resource-label'>Armor Rating</label>
+            <label class='resource-label'>Evasion Penalty</label>
             <input
               type='text'
-              name='system.armor.armorRating'
-              value='{{system.armor.armorRating}}'
+              name='system.armor.evasionPenalty'
+              value='{{system.armor.evasionPenalty}}'
               data-dtype='Number'
             />
           </div>
           <div class='grid-span-1'>
-            <label class='resource-label'>Armor Die</label>
+            <label class='resource-label'>Can Be Worn Under</label>
             <input
               type='text'
-              name='system.armor.armorDie'
-              value='{{system.armor.armorDie}}'
+              name='system.armor.wornUnder'
+              value='{{system.armor.wornUnder}}'
               data-dtype='String'
-            />
-          </div>
-          <div class='grid-span-1'>
-            <label class='resource-label'>Min Strength Bonus</label>
-            <input
-              type='text'
-              name='system.armor.minStrengthBonus'
-              value='{{system.armor.minStrengthBonus}}'
-              data-dtype='Number'
             />
           </div>
         </div>
         <div class='grid grid-1col'>
           <div class='grid-span-1'>
-            <label class='resource-label'>Properties</label>
-            <input
-              type='text'
-              name='system.armor.properties'
-              value='{{system.armor.properties}}'
-              data-dtype='String'
-            />
-          </div>
-        </div>
-        <div class='grid grid-2col'>
-          <div class='grid-span-1'>
-            <label class='resource-label'>Locations</label>
-            <input
-              type='text'
-              name='system.armor.locations'
-              value='{{system.armor.locations}}'
-              data-dtype='String'
-            />
-          </div>
-          <div class='grid-span-1'>
             <label class='resource-label'>Worn</label>
             <input
               type='checkbox'
               name='system.armor.worn'
-              data-dtype='String'
+              data-dtype='Boolean'
               {{#if system.armor.worn}}checked{{/if}}
             />
+          </div>
         </div>
       </div>
     </div>
   </section>
-</form>
+</div>

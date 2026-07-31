@@ -26,6 +26,20 @@ Hooks.once('init', function () {
   // Add custom constants for configuration.
   CONFIG.EDGELINER_RPG = EDGELINER_RPG;
 
+  // This Foundry build never populates CONFIG.TextEditor.engines.prosemirror, which is
+  // what the {{editor}} Handlebars helper checks before deciding how to build the editor
+  // element. Without it, the helper silently falls back to a static "editor-edit" button
+  // that nothing in ApplicationV2 attaches a click handler to. Registering it here routes
+  // {{editor}} through the real <prose-mirror> custom element instead, restoring working
+  // click-to-edit behavior everywhere the helper is used.
+  CONFIG.TextEditor.engines.prosemirror = {
+    render: (config) => foundry.applications.elements.HTMLProseMirrorElement.create({
+      ...config,
+      toggled: config.toggled ?? config.button ?? false,
+      enriched: config.enriched ?? config.value
+    })
+  };
+
   /**
    * Set an initiative formula for the system
    * @type {String}
@@ -47,12 +61,17 @@ Hooks.once('init', function () {
   }
   CONFIG.Item.documentClass = EdgelinerRPGItem;
   CONFIG.Item.dataModels = {
+    ancestry: models.EdgelinerRPGAncestry,
     armor: models.EdgelinerRPGArmor,
+    cyberdeck: models.EdgelinerRPGCyberdeck,
+    cyberdeckModule: models.EdgelinerRPGCyberdeckModule,
+    cyberdeckProgram: models.EdgelinerRPGCyberdeckProgram,
     cybernetic: models.EdgelinerRPGCybernetic,
+    drone: models.EdgelinerRPGDrone,
     hindrance: models.EdgelinerRPGHindrance,
     item: models.EdgelinerRPGItem,
-    powerarmor: models.EdgelinerRPGPowerArmor,
-    trait: models.EdgelinerRPGTrait,
+    spell: models.EdgelinerRPGSpell,
+    talent: models.EdgelinerRPGTalent,
     vehicle: models.EdgelinerRPGVehicle,
     vehicleweapon: models.EdgelinerRPGVehicleWeapon,
     weapon: models.EdgelinerRPGWeapon
@@ -64,19 +83,84 @@ Hooks.once('init', function () {
   CONFIG.ActiveEffect.legacyTransferral = false;
 
   // Register sheet application classes
-  Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('edgeliner-rpg', EdgelinerRPGActorSheet, {
+  foundry.documents.collections.Actors.unregisterSheet('core', foundry.appv1.sheets.ActorSheet);
+  foundry.documents.collections.Actors.registerSheet('edgeliner-rpg', EdgelinerRPGActorSheet, {
     makeDefault: true,
     label: 'EDGELINER_RPG.SheetLabels.Actor',
   });
-  Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('edgeliner-rpg', EdgelinerRPGItemSheet, {
+  foundry.documents.collections.Items.unregisterSheet('core', foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.registerSheet('edgeliner-rpg', EdgelinerRPGItemSheet, {
     makeDefault: true,
     label: 'EDGELINER_RPG.SheetLabels.Item',
   });
 
   // Preload Handlebars templates.
-  return preloadHandlebarsTemplates();
+  const partials = [
+    "systems/edgeliner-rpg/templates/actor/parts/actor-abilities.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-ancestry.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-effects.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-equipment.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-header.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-hindrances.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-powers.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-psychic.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-skills.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-talents.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-totem.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-vehicle.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/actor-words.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-air.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-animal.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-armor.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-banish.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-control.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-create.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-dark.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-destroy.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-earth.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-fire.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-force.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-it.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-light.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-me.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-plant.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-repair.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-shield.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-spirit.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-summon.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-them.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-there.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-transform.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-water.hbs",
+    "systems/edgeliner-rpg/templates/actor/parts/powers/actor-power-you.hbs",
+    "systems/edgeliner-rpg/templates/actor/actor-character-sheet.hbs",
+    "systems/edgeliner-rpg/templates/actor/actor-npc-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/parts/item-effects.hbs",
+    "systems/edgeliner-rpg/templates/item/item-ancestry-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-armor-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-cyberdeck-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-cyberdeckModule-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-cyberdeckProgram-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-cybernetic-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-drone-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-hindrance-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-item-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-power-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-talent-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-vehicle-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-vehicleweapon-sheet.hbs",
+    "systems/edgeliner-rpg/templates/item/item-weapon-sheet.hbs",
+  ]
+  const paths = {};
+  for ( const path of partials ) {
+    // Register under the literal .hbs path too, since every {{> "..."}} partial
+    // include in these templates references the raw source path directly.
+    paths[path] = path;
+    paths[path.replace(".hbs", ".html")] = path;
+    paths[`edgeliner-rpg.${path.split("/").pop().replace(".hbs", "")}`] = path;
+  }
+  return foundry.applications.handlebars.loadTemplates(paths);
 });
 
 /* -------------------------------------------- */
@@ -86,6 +170,20 @@ Hooks.once('init', function () {
 // If you need to add Handlebars helpers, here is a useful example:
 Handlebars.registerHelper('toLowerCase', function (str) {
   return str.toLowerCase();
+});
+
+// Splits an object's entries into two halves (by insertion order) so a two-column
+// layout can render each half as its own column without CSS overflowing into a third.
+Handlebars.registerHelper('firstHalf', function (obj) {
+  const entries = Object.entries(obj);
+  const half = Math.ceil(entries.length / 2);
+  return Object.fromEntries(entries.slice(0, half));
+});
+
+Handlebars.registerHelper('secondHalf', function (obj) {
+  const entries = Object.entries(obj);
+  const half = Math.ceil(entries.length / 2);
+  return Object.fromEntries(entries.slice(half));
 });
 
 /* -------------------------------------------- */

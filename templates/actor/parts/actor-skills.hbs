@@ -1,84 +1,247 @@
 <section>
-  <table>
-    <tr>
-      <th>Skill</th>
-      <th>Abilities</th>
-      <th>Training</th>
-      <th width="108">Upgraded</th>
-      <th width="108">Standard</th>
-      <th width="108">Downgraded</th>
-      <th>Usage Ticks</th>
-    </tr>
-    {{#each system.skills as |skill key|}}
-    <tr>
-      <td class="align-left">
-        <label for="system.skills.{{key}}" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.skills key)}}">{{localize (lookup @root.config.skills key)}}</label>
-      </td>
-      <td class="align-center">
-        <label>[</label>
-        <label for="system.skills.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{skill.attr1}}</label>
-        <label>|</label>
-        <label for="system.skills.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{skill.attr2}}</label>
-        <label>]</label>
-        <br/>
-        <label for="system.skills.{{key}}" class="resource-label flexsmall align-center" data-label="Value">Max: {{skill.maxTrainingStatus}}</label>
-      </td>
-      <td class="align-center">
-        <select id="system.skills.{{key}}" class="training-select" name="{{key}}">
-          <option value="untrained" {{#if (eq skill.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
-          <option value="apprentice" {{#if (eq skill.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
-          <option value="professional" {{#if (eq skill.trainingStatus "professional")}}selected{{/if}}>Professional</option>
-          <option value="expert" {{#if (eq skill.trainingStatus "expert")}}selected{{/if}}>Expert</option>
-          <option value="master" {{#if (eq skill.trainingStatus "master")}}selected{{/if}}>Master</option>
-          <option value="legendary" {{#if (eq skill.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
-        </select>
-      </td>
-      <td class="align-center">
-        <label for="system.skills.{{key}}" class="rollable resource-label flexsmall align-center" data-roll="{{skill.dieUp}}+{{skill.totalUp}}" data-label="Value">
-          <div class="tooltip">
-            <img src="systems/edgeliner-rpg/assets/d12.webp" class="die-icon" data-ability="{{key}}">
-            <span class="die-word">{{skill.dieUp}}{{#if isNegUp}}{{else}}+{{/if}}{{skill.totalUp}}</span>
-            <span class="tooltiptext">
-              <span class="tooltip-label">Die:</span> {{skill.dieUp}}<br>
-              <span class="tooltip-label">Bonus:</span> {{skill.bonusUp}}<br>
-              <span class="tooltip-label">Hindrance Mod:</span> {{skill.hindranceMod}}<br>
-              <span class="tooltip-label">Trait Mod:</span> {{skill.traitMod}}
-            </span>
+  <div class="skills-header">
+    <h4>Charm Skills ({{system.abilities.charm.die}}+{{system.abilities.charm.bonus}})</h4>
+    <div class="skills-columns">
+      <div class="skills-column">
+        {{#each (firstHalf system.skillsCharm) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsCharm" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsCharm" data-skill="{{key}}"></div>
+            &nbsp;
+            <a class="rollable" data-roll="{{skill.value}}+@charm.die+@charm.bonus" data-label="{{localize (lookup @root.config.skillsCharm key)}}">{{localize (lookup @root.config.skillsCharm key)}}</a>
           </div>
-        </label>
-      </td>
-      <td class="align-center">
-        <label for="system.skills.{{key}}" class="rollable resource-label flexsmall align-center" data-roll="{{skill.dieBase}}+{{skill.totalBase}}" data-label="Value">
-          <div class="tooltip">
-            <img src="systems/edgeliner-rpg/assets/d12.webp" class="die-icon" data-ability="{{key}}">
-            <span class="die-word">{{skill.dieBase}}{{#if isNegBase}}{{else}}+{{/if}}{{skill.totalBase}}</span>
-            <span class="tooltiptext">
-              <span class="tooltip-label">Die:</span> {{skill.dieBase}}<br>
-              <span class="tooltip-label">Bonus:</span> {{skill.bonusBase}}<br>
-              <span class="tooltip-label">Hindrance Mod:</span> {{skill.hindranceMod}}<br>
-              <span class="tooltip-label">Trait Mod:</span> {{skill.traitMod}}
-            </span>
+        {{/each}}
+      </div>
+      <div class="skills-column">
+        {{#each (secondHalf system.skillsCharm) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsCharm" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsCharm" data-skill="{{key}}"></div>
+            &nbsp;
+            <a class="rollable" data-roll="{{skill.value}}+@charm.die+@charm.bonus" data-label="{{localize (lookup @root.config.skillsCharm key)}}">{{localize (lookup @root.config.skillsCharm key)}}</a>
           </div>
-        </label>
-      </td>
-      <td class="align-center">
-        <label for="system.skills.{{key}}" class="rollable resource-label flexsmall align-center" data-roll="{{skill.dieDown}}+{{skill.totalDown}}" data-label="Value">
-          <div class="tooltip">
-            <img src="systems/edgeliner-rpg/assets/d12.webp" class="die-icon" data-ability="{{key}}">
-            <span class="die-word">{{skill.dieDown}}{{#if isNegDown}}{{else}}+{{/if}}{{skill.totalDown}}</span>
-            <span class="tooltiptext">
-              <span class="tooltip-label">Die:</span> {{skill.dieDown}}<br>
-              <span class="tooltip-label">Bonus:</span> {{skill.bonusDown}}<br>
-              <span class="tooltip-label">Hindrance Mod:</span> {{skill.hindranceMod}}<br>
-              <span class="tooltip-label">Trait Mod:</span> {{skill.traitMod}}
-            </span>
+        {{/each}}
+      </div>
+    </div>
+    <hr/>
+
+    <h4>Finesse Skills ({{system.abilities.finesse.die}}+{{system.abilities.finesse.bonus}})</h4>
+    <div class="skills-columns">
+      <div class="skills-column">
+        {{#each (firstHalf system.skillsFinesse) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsFinesse" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsFinesse" data-skill="{{key}}"></div>
+            &nbsp;
+            {{#if (eq key "dodge")}}
+              {{localize (lookup @root.config.skillsFinesse key)}}
+            {{else}}
+              <a class="rollable" data-roll="{{skill.value}}+@finesse.die+@finesse.bonus" data-label="{{localize (lookup @root.config.skillsFinesse key)}}">{{localize (lookup @root.config.skillsFinesse key)}}</a>
+            {{/if}}
           </div>
-        </label>
-      </td>
-      <td class="align-right">
-        <input type="checkbox" id="system.skills.{{key}}.tick" name="{{key}}" class="checkbox-selected resource-label flexsmall align-center" data-label="tickmark" {{#if skill.tickMark}}checked{{/if}}>
-      </td>
-    </tr>
-    {{/each}}
-  </table>
+        {{/each}}
+      </div>
+      <div class="skills-column">
+        {{#each (secondHalf system.skillsFinesse) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsFinesse" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsFinesse" data-skill="{{key}}"></div>
+            &nbsp;
+            {{#if (eq key "dodge")}}
+              {{localize (lookup @root.config.skillsFinesse key)}}
+            {{else}}
+              <a class="rollable" data-roll="{{skill.value}}+@finesse.die+@finesse.bonus" data-label="{{localize (lookup @root.config.skillsFinesse key)}}">{{localize (lookup @root.config.skillsFinesse key)}}</a>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <hr/>
+
+    <h4>Intellectual Skills ({{system.abilities.intellectual.die}}+{{system.abilities.intellectual.bonus}})</h4>
+    <div class="skills-columns">
+      <div class="skills-column">
+        {{#each (firstHalf system.skillsIntellectual) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsIntellectual" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsIntellectual" data-skill="{{key}}"></div>
+            &nbsp;
+            {{#if (eq key "packing")}}
+              {{localize (lookup @root.config.skillsIntellectual key)}}
+            {{else}}
+              <a class="rollable" data-roll="{{skill.value}}+@intellectual.die+@intellectual.bonus" data-label="{{localize (lookup @root.config.skillsIntellectual key)}}">{{localize (lookup @root.config.skillsIntellectual key)}}</a>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+      <div class="skills-column">
+        {{#each (secondHalf system.skillsIntellectual) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsIntellectual" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsIntellectual" data-skill="{{key}}"></div>
+            &nbsp;
+            {{#if (eq key "packing")}}
+              {{localize (lookup @root.config.skillsIntellectual key)}}
+            {{else}}
+              <a class="rollable" data-roll="{{skill.value}}+@intellectual.die+@intellectual.bonus" data-label="{{localize (lookup @root.config.skillsIntellectual key)}}">{{localize (lookup @root.config.skillsIntellectual key)}}</a>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <hr/>
+
+    <h4>Knowledge Skills ({{system.abilities.knowledge.die}}+{{system.abilities.knowledge.bonus}})</h4>
+    <div class="skills-columns">
+      <div class="skills-column">
+        {{#each (firstHalf system.skillsKnowledge) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsKnowledge" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsKnowledge" data-skill="{{key}}"></div>
+            &nbsp;
+            <a class="rollable" data-roll="{{skill.value}}+@knowledge.die+@knowledge.bonus" data-label="{{localize (lookup @root.config.skillsKnowledge key)}}">{{localize (lookup @root.config.skillsKnowledge key)}}</a>
+          </div>
+        {{/each}}
+      </div>
+      <div class="skills-column">
+        {{#each (secondHalf system.skillsKnowledge) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsKnowledge" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsKnowledge" data-skill="{{key}}"></div>
+            &nbsp;
+            <a class="rollable" data-roll="{{skill.value}}+@knowledge.die+@knowledge.bonus" data-label="{{localize (lookup @root.config.skillsKnowledge key)}}">{{localize (lookup @root.config.skillsKnowledge key)}}</a>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <hr/>
+
+    <h4>Might Skills ({{system.abilities.might.die}}+{{system.abilities.might.bonus}})</h4>
+    <div class="skills-columns">
+      <div class="skills-column">
+        {{#each (firstHalf system.skillsMight) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsMight" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsMight" data-skill="{{key}}"></div>
+            &nbsp;
+            {{#if (eq key "armor")}}
+              {{localize (lookup @root.config.skillsMight key)}}
+            {{else}}
+              <a class="rollable" data-roll="{{skill.value}}+@might.die+@might.bonus" data-label="{{localize (lookup @root.config.skillsMight key)}}">{{localize (lookup @root.config.skillsMight key)}}</a>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+      <div class="skills-column">
+        {{#each (secondHalf system.skillsMight) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsMight" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsMight" data-skill="{{key}}"></div>
+            &nbsp;
+            {{#if (eq key "armor")}}
+              {{localize (lookup @root.config.skillsMight key)}}
+            {{else}}
+              <a class="rollable" data-roll="{{skill.value}}+@might.die+@might.bonus" data-label="{{localize (lookup @root.config.skillsMight key)}}">{{localize (lookup @root.config.skillsMight key)}}</a>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <hr/>
+
+    <h4>Psychic Power Skills ({{system.abilities.power.die}}+{{system.abilities.power.bonus}})</h4>
+    <label>Requires Psychic Power Talent to Select</label>
+    <div class="skills-columns">
+      <div class="skills-column">
+        {{#each (firstHalf system.skillsPowerPsychic) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsPowerPsychic" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsPowerPsychic" data-skill="{{key}}"></div>
+            &nbsp;
+            <a class="rollable" data-roll="{{skill.value}}+@power.die+@power.bonus" data-label="{{localize (lookup @root.config.skillsPowerPsychic key)}}">{{localize (lookup @root.config.skillsPowerPsychic key)}}</a>
+          </div>
+        {{/each}}
+      </div>
+      <div class="skills-column">
+        {{#each (secondHalf system.skillsPowerPsychic) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsPowerPsychic" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsPowerPsychic" data-skill="{{key}}"></div>
+            &nbsp;
+            <a class="rollable" data-roll="{{skill.value}}+@power.die+@power.bonus" data-label="{{localize (lookup @root.config.skillsPowerPsychic key)}}">{{localize (lookup @root.config.skillsPowerPsychic key)}}</a>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <hr/>
+
+    <h4>Totem Aspect Skills ({{system.abilities.power.die}}+{{system.abilities.power.bonus}})</h4>
+    <label>Requires Totem Aspect Talent to Select</label>
+    <div class="skills-columns">
+      <div class="skills-column">
+        {{#each (firstHalf system.skillsPowerTotem) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsPowerTotem" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsPowerTotem" data-skill="{{key}}"></div>
+            &nbsp;
+            <a class="rollable" data-roll="{{skill.value}}+@power.die+@power.bonus" data-label="{{localize (lookup @root.config.skillsPowerTotem key)}}">{{localize (lookup @root.config.skillsPowerTotem key)}}</a>
+          </div>
+        {{/each}}
+      </div>
+      <div class="skills-column">
+        {{#each (secondHalf system.skillsPowerTotem) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsPowerTotem" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsPowerTotem" data-skill="{{key}}"></div>
+            &nbsp;
+            <a class="rollable" data-roll="{{skill.value}}+@power.die+@power.bonus" data-label="{{localize (lookup @root.config.skillsPowerTotem key)}}">{{localize (lookup @root.config.skillsPowerTotem key)}}</a>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <hr/>
+
+    <h4>Words of Power Skills ({{system.abilities.power.die}}+{{system.abilities.power.bonus}})</h4>
+    <label>Requires Words of Power Talent to Select</label>
+    <div class="skills-columns">
+      <div class="skills-column">
+        {{#each (firstHalf system.skillsPowerWords) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsPowerWords" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsPowerWords" data-skill="{{key}}"></div>
+            &nbsp;
+            <a class="rollable" data-roll="{{skill.value}}+@power.die+@power.bonus" data-label="{{localize (lookup @root.config.skillsPowerWords key)}}">{{localize (lookup @root.config.skillsPowerWords key)}}</a>
+          </div>
+        {{/each}}
+      </div>
+      <div class="skills-column">
+        {{#each (secondHalf system.skillsPowerWords) as |skill key|}}
+          <div>
+            <div class="fa fa-plus-square increase-skill" data-category="skillsPowerWords" data-skill="{{key}}"></div>
+            {{skill.value}}
+            <div class="fa fa-minus-square decrease-skill" data-category="skillsPowerWords" data-skill="{{key}}"></div>
+            &nbsp;
+            <a class="rollable" data-roll="{{skill.value}}+@power.die+@power.bonus" data-label="{{localize (lookup @root.config.skillsPowerWords key)}}">{{localize (lookup @root.config.skillsPowerWords key)}}</a>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+  </div>
+
 </section>
